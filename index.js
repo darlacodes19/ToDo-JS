@@ -16,19 +16,16 @@ addTaskBtn.addEventListener("click" , () => {
     allTasks.push(taskInfo)
     
 
+    tasksDisplay.textContent += taskInfo.task
 
-    //map over array and display each tasks 
-    const tasks = allTasks.map( task => {
-        
-        tasksDisplay.textContent += task.task
-})
+    //clears out input field 
+
+taskInput.value = " "
     
 })
 
 
 //issues to solve
-    //upload to github 
-    //clear input field after adding task
     //don't display tasks if they are already on the list after clicking add 
     //use local storage 
 
