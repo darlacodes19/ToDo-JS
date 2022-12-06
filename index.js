@@ -1,8 +1,16 @@
 const addTaskBtn = document.querySelector("#add-task-button");
 const tasksDisplay = document.querySelector(".tasks-display")
 const taskInput = document.querySelector(".task-input")
+const tasksUl = document.querySelector("ul")
 
 const allTasks = []
+
+const liMaker = (text) => {
+    const li = document.createElement('li');
+    li.textContent = text
+    tasksUl.appendChild(li)
+}
+
 
 addTaskBtn.addEventListener("click" , () => {
 
@@ -16,16 +24,45 @@ addTaskBtn.addEventListener("click" , () => {
     allTasks.push(taskInfo)
     
 
-    tasksDisplay.textContent += taskInfo.task
+    // tasksDisplay.textContent += taskInfo.task
+
+    liMaker(taskInput.value)
 
     //clears out input field 
 
 taskInput.value = " "
+
+//store task into localStorage 
+
+// localStorage.setItem("Tasks" , JSON.stringify(allTasks))
+
+
     
 })
 
+const tasksFromLocalStorage = JSON.parse(localStorage.getItem("Tasks"))
+
+console.log(tasksFromLocalStorage)
+
+if (tasksFromLocalStorage) {
+        renderTasks()
+}
+
+
+
+function renderTasks () {
+
+    for (let i = 0; i< tasksFromLocalStorage.length; i++) {
+        tasksDisplay.textContent += tasksFromLocalStorage.task[i]
+    }
+   
+  
+}
+
+
 
 //issues to solve
-    //don't display tasks if they are already on the list after clicking add 
     //use local storage 
+    //add delete edit and complete buttons 
+
 
