@@ -10,11 +10,15 @@ const tasksFromLocalStorage = JSON.parse(window.localStorage.getItem("Tasks")) |
 
 
 
+
+
 const liMaker = (text) => {
     const li = document.createElement('li');
     li.textContent = text
     tasksUl.appendChild(li)
 }
+
+
 
 
 addTaskBtn.addEventListener("click" , (e) => {
@@ -44,12 +48,13 @@ taskInput.value = " "
 //store task into localStorage 
 
 
-
+renderTasks()
 
     
 })
 
 
+console.log(tasksFromLocalStorage)
 
 
 if (tasksFromLocalStorage) {
@@ -60,18 +65,22 @@ if (tasksFromLocalStorage) {
 
 function renderTasks () {
 
-   tasksFromLocalStorage.forEach((item) => {
-       liMaker(item.task)
-   })
+
+    for (let i =0; i<tasksFromLocalStorage.length; i++) {
+        liMaker(tasksFromLocalStorage[i])
+    }
+
+   
    
   
 }
 
 
 
+
+
 //issues to solve
-    //everytime I refresh and then click on add a new task it goes away
-        //maybe because i'm creating a new task object each time??? 
+    //display tasks 
     //add delete edit and complete buttons 
     //finish design 
 
