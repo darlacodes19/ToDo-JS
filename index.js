@@ -13,9 +13,13 @@ const tasksFromLocalStorage = JSON.parse(window.localStorage.getItem("Tasks")) |
 
 
 const liMaker = (text) => {
+    const deleteButton = document.createElement('button')
+    deleteButton.className="buttons"
+    deleteButton.textContent="Delete"
     const li = document.createElement('li');
     li.textContent = text
     tasksUl.appendChild(li)
+    tasksUl.appendChild(deleteButton)
 }
 
 
@@ -80,7 +84,6 @@ function renderTasks () {
 
 
 //issues to solve
-    //display tasks 
     //add delete edit and complete buttons 
     //finish design 
 
