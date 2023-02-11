@@ -13,13 +13,20 @@ const tasksFromLocalStorage = JSON.parse(window.localStorage.getItem("Tasks")) |
 
 
 const liMaker = (text) => {
+//create new div
+
+    const itemDiv = document.createElement('div')
+    itemDiv.className="items"
+    tasksUl.appendChild(itemDiv)
+//create deletebutton
     const deleteButton = document.createElement('button')
     deleteButton.className="buttons"
     deleteButton.textContent="Delete"
+//create list task item 
     const li = document.createElement('li');
     li.textContent = text
-    tasksUl.appendChild(li)
-    tasksUl.appendChild(deleteButton)
+    itemDiv.appendChild(li)
+    itemDiv.appendChild(deleteButton)
 }
 
 
@@ -52,7 +59,6 @@ taskInput.value = " "
 //store task into localStorage 
 
 
-renderTasks()
 
     
 })
@@ -71,6 +77,7 @@ function renderTasks () {
 
 
     for (let i =0; i<tasksFromLocalStorage.length; i++) {
+        
         liMaker(tasksFromLocalStorage[i])
     }
 
