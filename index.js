@@ -2,15 +2,29 @@ const addTaskBtn = document.querySelector("#add-task-button");
 const tasksDisplay = document.querySelector(".tasks-display")
 const taskInput = document.querySelector(".task-input")
 const tasksUl = document.querySelector("ul")
-
-const allTasks = []
-
-
 const tasksFromLocalStorage = JSON.parse(window.localStorage.getItem("Tasks")) || []
 
 
 
+function deleteItem (index) {
+tasksFromLocalStorage.splice(index,1)
+window.localStorage.setItem("Tasks" , JSON.stringify(tasksFromLocalStorage))
 
+
+}
+
+function addEventListener (thing) {
+    for (let i =0; i<thing.length; i++) {   
+        thing[i].addEventListener('click' , () => {
+           
+            deleteItem(i)
+           
+            
+          
+        })
+    }
+
+}
 
 const liMaker = (text) => {
 //create new div
@@ -20,8 +34,15 @@ const liMaker = (text) => {
     tasksUl.appendChild(itemDiv)
 //create deletebutton
     const deleteButton = document.createElement('button')
-    deleteButton.className="buttons"
+    deleteButton.className="delete-button"
     deleteButton.textContent="Delete"
+    const deletebtn = document.querySelectorAll('.delete-button')
+    addEventListener(deletebtn)
+    
+   
+    
+   
+
 //create list task item 
     const li = document.createElement('li');
     li.textContent = text
@@ -30,7 +51,7 @@ const liMaker = (text) => {
 }
 
 
-
+//ADD NEW TASK
 
 addTaskBtn.addEventListener("click" , (e) => {
 
@@ -59,12 +80,12 @@ taskInput.value = " "
 //store task into localStorage 
 
 
-
+location.reload()
     
 })
 
 
-console.log(tasksFromLocalStorage)
+
 
 
 if (tasksFromLocalStorage) {
@@ -85,6 +106,7 @@ function renderTasks () {
    
   
 }
+
 
 
 
