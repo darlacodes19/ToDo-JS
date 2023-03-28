@@ -1,5 +1,9 @@
 
-.buttons{
+.delete-button{
     height: 20px;
     width: 60px;
+}
+
+.items {
+    display: flex;
 }
