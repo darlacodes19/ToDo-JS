@@ -10,7 +10,6 @@ function deleteItem (index) {
 tasksFromLocalStorage.splice(index,1)
 window.localStorage.setItem("Tasks" , JSON.stringify(tasksFromLocalStorage))
 
-
 }
 
 function addEventListener (thing) {
